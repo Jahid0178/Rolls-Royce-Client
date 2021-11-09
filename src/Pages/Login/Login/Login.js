@@ -1,8 +1,17 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useHistory } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
+  const { signInWithGoogle } = useAuth();
+  const history = useHistory();
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(history);
+  };
+
   return (
     <Container sx={{ display: "flex", justifyContent: "center" }}>
       <Box sx={{ mt: 5, textAlign: "center" }}>
@@ -28,7 +37,11 @@ const Login = () => {
         </form>
         <div>-----------------------OR-----------------------</div>
         <Box>
-          <Button variant="contained" sx={{ mt: 3 }}>
+          <Button
+            onClick={handleGoogleSignIn}
+            variant="contained"
+            sx={{ mt: 3 }}
+          >
             Google Login
           </Button>
         </Box>
