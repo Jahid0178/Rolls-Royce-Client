@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
+import CardMedia from "@mui/material/CardMedia";
 
 const Navigation = () => {
   return (
@@ -23,10 +24,10 @@ const Navigation = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Rolls Royce
           </Typography>
           <NavLink to="#" style={{ textDecoration: "none" }}>
-            <Button variant="contained">Explore More</Button>
+            <Button variant="contained">More Products</Button>
           </NavLink>
           <Button color="inherit">Login</Button>
         </Toolbar>
