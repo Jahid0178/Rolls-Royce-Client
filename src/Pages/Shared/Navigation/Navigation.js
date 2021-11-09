@@ -31,17 +31,27 @@ const Navigation = () => {
             Rolls Royce
           </Typography>
           <NavLink to="/moreProducts" style={{ textDecoration: "none" }}>
-            <Button variant="contained">More Products</Button>
+            <Button sx={{ mr: 1 }} variant="contained">
+              More Products
+            </Button>
           </NavLink>
+
           {user.email ? (
-            <NavLink to="/" style={{ textDecoration: "none" }}>
-              <Button onClick={logOut} variant="contained">
-                Log Out
-              </Button>
-            </NavLink>
+            <Box>
+              <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                <Button variant="contained">Dashboard</Button>
+              </NavLink>
+              <NavLink to="/" style={{ textDecoration: "none" }}>
+                <Button sx={{ ml: 1 }} onClick={logOut} variant="contained">
+                  Log Out
+                </Button>
+              </NavLink>
+            </Box>
           ) : (
             <NavLink to="/login" style={{ textDecoration: "none" }}>
-              <Button variant="contained">Log In</Button>
+              <Button sx={{ ml: 1 }} variant="contained">
+                Log In
+              </Button>
             </NavLink>
           )}
         </Toolbar>

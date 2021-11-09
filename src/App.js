@@ -5,6 +5,7 @@ import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import MoreProducts from "./Pages/MoreProducts/MoreProducts";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 
 const theme = createTheme({
   palette: {
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/moreProducts">
               <MoreProducts></MoreProducts>
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard></Dashboard>
             </Route>
             <Route path="/login">
               <Login></Login>
