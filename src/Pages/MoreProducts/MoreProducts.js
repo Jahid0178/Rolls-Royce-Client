@@ -1,10 +1,11 @@
+import { Container } from "@mui/material";
 import React from "react";
 
 const MoreProducts = () => {
   return (
-    <div>
+    <Container>
       <h2>This is more products</h2>
-    </div>
+    </Container>
   );
 };
 
