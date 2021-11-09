@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import servicesLogo from "../../../Images/services.png";
+import "./Services.css";
 
 const alignment = {
   display: "flex",

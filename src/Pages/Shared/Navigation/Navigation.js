@@ -7,12 +7,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
-import CardMedia from "@mui/material/CardMedia";
 
 const Navigation = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box
+      style={{ position: "sticky", top: 0, zIndex: 999 }}
+      sx={{ flexGrow: 1 }}
+    >
+      <AppBar position="static" sx={{ background: "#333" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -26,7 +28,7 @@ const Navigation = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Rolls Royce
           </Typography>
-          <NavLink to="#" style={{ textDecoration: "none" }}>
+          <NavLink to="/moreProducts" style={{ textDecoration: "none" }}>
             <Button variant="contained">More Products</Button>
           </NavLink>
           <Button color="inherit">Login</Button>
