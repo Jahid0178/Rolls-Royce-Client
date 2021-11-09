@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
 import Home from "./Pages/Home/Home/Home";
+import Login from "./Pages/Login/Login/Login";
 import MoreProducts from "./Pages/MoreProducts/MoreProducts";
 
 const theme = createTheme({
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path="/moreProducts">
               <MoreProducts></MoreProducts>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
             </Route>
           </Switch>
         </Router>

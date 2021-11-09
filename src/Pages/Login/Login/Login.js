@@ -1,10 +1,39 @@
+import { Button, Container, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
 
 const Login = () => {
   return (
-    <div>
-      <h2>This is login</h2>
-    </div>
+    <Container sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ mt: 5, textAlign: "center" }}>
+        <Typography variant="h5" sx={{ mb: 2 }}>
+          Login
+        </Typography>
+        <form>
+          <TextField
+            label="Email"
+            variant="standard"
+            sx={{ width: "100%", mb: 2 }}
+          />
+          <br />
+          <TextField
+            label="Password"
+            variant="standard"
+            sx={{ width: "100%" }}
+          />
+          <br />
+          <Button variant="contained" sx={{ mt: 2, mb: 2 }}>
+            Login
+          </Button>
+        </form>
+        <div>-----------------------OR-----------------------</div>
+        <Box>
+          <Button variant="contained" sx={{ mt: 3 }}>
+            Google Login
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 
