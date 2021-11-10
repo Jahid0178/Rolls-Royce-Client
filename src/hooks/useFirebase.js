@@ -23,6 +23,7 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        console.log(user);
         history.push("/");
       })
       .catch((error) => {

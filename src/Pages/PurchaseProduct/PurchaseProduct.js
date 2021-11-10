@@ -10,16 +10,32 @@ import {
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const PurchaseProduct = () => {
   const { id } = useParams();
   const [singleProduct, setSingleProduct] = useState({});
+  const { user } = useAuth();
+
   useEffect(() => {
     const url = `http://localhost:4000/products/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
   }, []);
+
+  const handlePurchase = (id) => {
+    const url = `http://localhost:4000/purchaseProduct/${id}&&${user.email}`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(singleProduct),
+    });
+    console.log(url);
+  };
+
   return (
     <Container sx={{ display: "flex", justifyContent: "center" }}>
       <Card sx={{ maxWidth: 345, my: 3 }}>
@@ -53,7 +69,12 @@ const PurchaseProduct = () => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained">Purchase</Button>
+          <Button
+            onClick={() => handlePurchase(singleProduct?._id)}
+            variant="contained"
+          >
+            Purchase
+          </Button>
         </CardActions>
       </Card>
     </Container>

@@ -11,6 +11,7 @@ import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
 import Payment from "./Pages/Dashboard/Payment/Payment";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import Review from "./Pages/Dashboard/Review/Review";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 
 const theme = createTheme({
   palette: {
@@ -35,9 +36,9 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/moreProducts">
+            <PrivateRoute path="/moreProducts">
               <MoreProducts></MoreProducts>
-            </Route>
+            </PrivateRoute>
             <Route path="/addNewProduct">
               <AddNewProduct></AddNewProduct>
             </Route>
