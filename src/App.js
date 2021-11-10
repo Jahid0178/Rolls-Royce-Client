@@ -6,6 +6,7 @@ import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import MoreProducts from "./Pages/MoreProducts/MoreProducts";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
+import AddNewProduct from "./Pages/Dashboard/AddNewProduct/AddNewProduct";
 
 const theme = createTheme({
   palette: {
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/moreProducts/:id">
               <MoreProducts></MoreProducts>
+            </Route>
+            <Route path="/addNewProduct">
+              <AddNewProduct></AddNewProduct>
             </Route>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
