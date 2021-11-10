@@ -15,7 +15,7 @@ const Product = (props) => {
   const history = useHistory();
 
   const handleViewDetails = (id) => {
-    history.push(`/moreProducts/${id}`);
+    history.push(`/purchaseProduct/${id}`);
   };
 
   return (

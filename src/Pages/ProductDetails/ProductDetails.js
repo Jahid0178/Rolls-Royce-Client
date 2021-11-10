@@ -22,7 +22,7 @@ const ProductDetails = (props) => {
     driveTrain,
   } = props.product;
   return (
-    <Grid item xs={12} sm={12} md={6} lg={4} sx={{ mt: 2 }}>
+    <Grid item xs={12} sm={6} md={4} lg={3} sx={{ my: 2 }}>
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
@@ -34,24 +34,18 @@ const ProductDetails = (props) => {
           <Typography gutterBottom variant="h5" component="div">
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {price}
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Price: {price}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {desc}
-          </Typography>
+          <Typography variant="body2">{desc}</Typography>
           <Box sx={{ display: "flex", my: 2 }}>
-            <Typography sx={{ mr: 2 }} variant="body1" color="text.secondary">
+            <Typography sx={{ mr: 2 }} variant="body1">
               Fuel Type: {fuelType}
             </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Engine: {engine}
-            </Typography>
+            <Typography variant="body1">Engine: {engine}</Typography>
           </Box>
           <Typography sx={{ my: 2 }}>{powerAndTorque}</Typography>
-          <Typography variant="body1" color="text.secondary">
-            Drive Train: {driveTrain}
-          </Typography>
+          <Typography variant="body1">Drive Train: {driveTrain}</Typography>
         </CardContent>
         <CardActions>
           <Button variant="contained">Purchase</Button>
