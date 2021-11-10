@@ -1,12 +1,12 @@
 import { Container } from "@mui/material";
 import React from "react";
 
-const Payment = () => {
+const Review = () => {
   return (
     <Container>
-      <h2>Payment coming soon</h2>
+      <h2>Review</h2>
     </Container>
   );
 };
 
-export default Payment;
+export default Review;

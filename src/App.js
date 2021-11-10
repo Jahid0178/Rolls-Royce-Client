@@ -8,6 +8,9 @@ import MoreProducts from "./Pages/MoreProducts/MoreProducts";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import AddNewProduct from "./Pages/Dashboard/AddNewProduct/AddNewProduct";
 import PurchaseProduct from "./Pages/PurchaseProduct/PurchaseProduct";
+import Payment from "./Pages/Dashboard/Payment/Payment";
+import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
+import Review from "./Pages/Dashboard/Review/Review";
 
 const theme = createTheme({
   palette: {
@@ -43,6 +46,15 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <Dashboard></Dashboard>
+            </Route>
+            <Route path="/payment">
+              <Payment></Payment>
+            </Route>
+            <Route path="/myOrders">
+              <MyOrders></MyOrders>
+            </Route>
+            <Route path="/review">
+              <Review></Review>
             </Route>
             <Route path="/login">
               <Login></Login>

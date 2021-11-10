@@ -37,6 +37,21 @@ function Dashboard(props) {
           <Button variant="contained">Add New Service</Button>
         </Box>
       </NavLink>
+      <NavLink to="/myOrders" style={{ textDecoration: "none" }}>
+        <Box sx={{ mt: 2, ml: 2 }}>
+          <Button variant="contained">My Orders</Button>
+        </Box>
+      </NavLink>
+      <NavLink to="/payment" style={{ textDecoration: "none" }}>
+        <Box sx={{ mt: 2, ml: 2 }}>
+          <Button variant="contained">Payment</Button>
+        </Box>
+      </NavLink>
+      <NavLink to="/review" style={{ textDecoration: "none" }}>
+        <Box sx={{ mt: 2, ml: 2 }}>
+          <Button variant="contained">Review</Button>
+        </Box>
+      </NavLink>
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
