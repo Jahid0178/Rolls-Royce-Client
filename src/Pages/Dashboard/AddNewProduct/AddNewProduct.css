@@ -5,6 +5,7 @@ input {
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 0 10px;
+  outline: 0;
 }
 
 .field-container {
@@ -22,4 +23,5 @@ input[type="submit"] {
   width: 20%;
   height: 40px;
   border-radius: 5px;
+  margin-top: 10px;
 }

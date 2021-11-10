@@ -1,14 +1,32 @@
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import React from "react";
 import "./AddNewProduct.css";
 import { Box } from "@mui/system";
+import { ResetTv } from "@mui/icons-material";
 
 const AddNewProduct = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    fetch("http://localhost:4000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged === true) {
+          alert("Product Added Successfully");
+        }
+      });
+  };
   return (
     <Container>
+      <Typography variant="h4" sx={{ textAlign: "center", pt: 3 }}>
+        Add New Product
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className="field-container">
           <input
