@@ -58,7 +58,7 @@ const ProductDetails = (props) => {
         </CardContent>
         <CardActions>
           <Button variant="contained" onClick={() => handleViewDetails(_id)}>
-            Purchase
+            Go To Purchase
           </Button>
         </CardActions>
       </Card>

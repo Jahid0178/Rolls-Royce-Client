@@ -1,12 +1,61 @@
-import { Container } from "@mui/material";
-import React from "react";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const PurchaseProduct = () => {
   const { id } = useParams();
+  const [singleProduct, setSingleProduct] = useState({});
+  useEffect(() => {
+    const url = `http://localhost:4000/products/${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setSingleProduct(data));
+  }, []);
   return (
-    <Container>
-      <h2>This {id}</h2>
+    <Container sx={{ display: "flex", justifyContent: "center" }}>
+      <Card sx={{ maxWidth: 345, my: 3 }}>
+        <CardMedia
+          component="img"
+          height="180"
+          image={singleProduct?.img}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {singleProduct?.name}
+          </Typography>
+          <Typography variant="h6" sx={{ mb: 1 }}>
+            Price: {singleProduct?.price}
+          </Typography>
+          <Typography variant="body2">{singleProduct?.desc}</Typography>
+          <Box sx={{ display: "flex", my: 2 }}>
+            <Typography sx={{ mr: 2 }} variant="body1">
+              Fuel Type: {singleProduct?.fuelType}
+            </Typography>
+            <Typography variant="body1">
+              Engine: {singleProduct?.engine}
+            </Typography>
+          </Box>
+          <Typography sx={{ my: 2 }}>
+            {singleProduct?.powerAndTorque}
+          </Typography>
+          <Typography variant="body1">
+            Drive Train: {singleProduct?.driveTrain}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button variant="contained">Purchase</Button>
+        </CardActions>
+      </Card>
     </Container>
   );
 };
