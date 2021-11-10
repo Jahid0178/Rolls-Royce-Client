@@ -9,9 +9,11 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useHistory } from "react-router";
 
 const ProductDetails = (props) => {
   const {
+    _id,
     img,
     name,
     price,
@@ -21,6 +23,13 @@ const ProductDetails = (props) => {
     powerAndTorque,
     driveTrain,
   } = props.product;
+
+  const history = useHistory();
+
+  const handleViewDetails = (id) => {
+    history.push(`/purchaseProduct/${id}`);
+  };
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} sx={{ my: 2 }}>
       <Card sx={{ maxWidth: 345 }}>
@@ -48,7 +57,9 @@ const ProductDetails = (props) => {
           <Typography variant="body1">Drive Train: {driveTrain}</Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained">Purchase</Button>
+          <Button variant="contained" onClick={() => handleViewDetails(_id)}>
+            Purchase
+          </Button>
         </CardActions>
       </Card>
     </Grid>
