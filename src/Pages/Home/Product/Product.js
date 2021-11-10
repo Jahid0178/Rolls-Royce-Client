@@ -11,6 +11,7 @@ import React from "react";
 
 const Product = (props) => {
   const { img, name, price, desc } = props.product;
+
   return (
     <>
       <Grid item xs={12} sm={12} md={6} lg={4}>
