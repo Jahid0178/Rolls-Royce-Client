@@ -8,9 +8,15 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useHistory } from "react-router";
 
 const Product = (props) => {
   const { img, name, price, desc } = props.product;
+  const history = useHistory();
+
+  const handleViewDetails = (id) => {
+    history.push(`/moreProducts/${id}`);
+  };
 
   return (
     <>
@@ -27,7 +33,12 @@ const Product = (props) => {
             <Typography>$ {price}</Typography>
           </CardContent>
           <CardActions>
-            <Button variant="contained">View Details</Button>
+            <Button
+              onClick={() => handleViewDetails(props.product._id)}
+              variant="contained"
+            >
+              Purchase
+            </Button>
           </CardActions>
         </Card>
       </Grid>

@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import "./AddNewProduct.css";
 import { Box } from "@mui/system";
-import { ResetTv } from "@mui/icons-material";
 
 const AddNewProduct = () => {
   const { register, handleSubmit } = useForm();

@@ -1,10 +1,30 @@
-import { Container } from "@mui/material";
-import React from "react";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import ProductDetails from "../ProductDetails/ProductDetails";
 
 const MoreProducts = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
   return (
     <Container>
-      <h2>This is more products</h2>
+      <Grid container spacing={2}>
+        {products.map((product) => (
+          <ProductDetails key={product._id} product={product}></ProductDetails>
+        ))}
+      </Grid>
     </Container>
   );
 };

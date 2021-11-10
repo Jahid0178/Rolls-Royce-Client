@@ -31,7 +31,7 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/moreProducts/:id">
+            <Route path="/moreProducts">
               <MoreProducts></MoreProducts>
             </Route>
             <Route path="/addNewProduct">
