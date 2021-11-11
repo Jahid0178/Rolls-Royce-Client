@@ -45,6 +45,11 @@ function Dashboard(props) {
           <Button variant="contained">Add New Service</Button>
         </Box>
       </NavLink>
+      <NavLink to="/makeAdmin" style={{ textDecoration: "none" }}>
+        <Box sx={{ mt: 2, ml: 2 }}>
+          <Button variant="contained">Make Admin</Button>
+        </Box>
+      </NavLink>
       <NavLink to="/myOrders" style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">My Orders</Button>

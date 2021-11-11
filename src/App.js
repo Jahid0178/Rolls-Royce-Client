@@ -12,6 +12,8 @@ import Payment from "./Pages/Dashboard/Payment/Payment";
 import MyOrders from "./Pages/Dashboard/MyOrders/MyOrders";
 import Review from "./Pages/Dashboard/Review/Review";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
+import Register from "./Pages/Login/Register/Register";
 
 const theme = createTheme({
   palette: {
@@ -57,8 +59,14 @@ function App() {
             <Route path="/review">
               <Review></Review>
             </Route>
+            <Route path="/makeAdmin">
+              <MakeAdmin></MakeAdmin>
+            </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
             </Route>
           </Switch>
         </Router>

@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -31,6 +32,33 @@ const useFirebase = () => {
       });
   };
 
+  // register user
+  const registerUser = (email, password, name) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setError("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        // save user to database
+        saveUser(email, name);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  // Save User
+  const saveUser = (email, displayName) => {
+    const user = { email, displayName };
+    fetch("http://localhost:4000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
+  };
+
   // User logout
   const logOut = () => {
     signOut(auth).then(() => {
@@ -52,6 +80,7 @@ const useFirebase = () => {
     user,
     error,
     signInWithGoogle,
+    registerUser,
     logOut,
   };
 };

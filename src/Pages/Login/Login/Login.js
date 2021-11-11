@@ -2,6 +2,7 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
@@ -45,6 +46,9 @@ const Login = () => {
             Google Login
           </Button>
         </Box>
+        <NavLink to="/register" style={{ textDecoration: "none" }}>
+          <Button sx={{ mt: 1 }}>New user? please register</Button>
+        </NavLink>
       </Box>
     </Container>
   );
