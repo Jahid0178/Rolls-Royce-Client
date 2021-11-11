@@ -8,7 +8,10 @@ import useAuth from "../../../hooks/useAuth";
 const Login = () => {
   const { signInWithGoogle, loginUser } = useAuth();
   const history = useHistory();
-  const [logInData, setLogInData] = useState();
+  const [logInData, setLogInData] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleGoogleSignIn = () => {
     signInWithGoogle(history);
@@ -18,12 +21,13 @@ const Login = () => {
     const field = e.target.name;
     const value = e.target.value;
     const newLoginData = { ...logInData };
+    console.log(newLoginData);
     newLoginData[field] = value;
     setLogInData(newLoginData);
   };
 
   const handleLoginSubmit = (e) => {
-    loginUser(logInData?.email, logInData?.password, history);
+    loginUser(logInData?.email, logInData?.password);
     e.preventDefault();
   };
 
@@ -37,8 +41,9 @@ const Login = () => {
           <TextField
             label="Your Email"
             type="email"
-            name="name"
-            onBlur={handleOnBlur}
+            name="email"
+            value={logInData.email}
+            onChange={handleOnBlur}
             variant="standard"
             sx={{ width: "100%", mb: 2 }}
           />
@@ -47,7 +52,8 @@ const Login = () => {
             label="Your Password"
             type="password"
             name="password"
-            onBlur={handleOnBlur}
+            value={logInData.password}
+            onChange={handleOnBlur}
             variant="standard"
             sx={{ width: "100%" }}
           />
