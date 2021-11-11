@@ -16,7 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const drawerWidth = 240;
@@ -24,7 +24,7 @@ const drawerWidth = 240;
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const { user, logOut } = useAuth();
+  const { user, logOut, admin } = useAuth();
   const history = useHistory();
 
   const handleDrawerToggle = () => {
@@ -40,16 +40,22 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <NavLink to="/addNewProduct" style={{ textDecoration: "none" }}>
-        <Box sx={{ mt: 2, ml: 2 }}>
-          <Button variant="contained">Add New Service</Button>
+      {admin ? (
+        <Box>
+          <Link to="/addNewProduct" style={{ textDecoration: "none" }}>
+            <Box sx={{ mt: 2, ml: 2 }}>
+              <Button variant="contained">Add New Service</Button>
+            </Box>
+          </Link>
+          <Link to="/makeAdmin" style={{ textDecoration: "none" }}>
+            <Box sx={{ mt: 2, ml: 2 }}>
+              <Button variant="contained">Make Admin</Button>
+            </Box>
+          </Link>
         </Box>
-      </NavLink>
-      <NavLink to="/makeAdmin" style={{ textDecoration: "none" }}>
-        <Box sx={{ mt: 2, ml: 2 }}>
-          <Button variant="contained">Make Admin</Button>
-        </Box>
-      </NavLink>
+      ) : (
+        ""
+      )}
       <NavLink to="/myOrders" style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">My Orders</Button>

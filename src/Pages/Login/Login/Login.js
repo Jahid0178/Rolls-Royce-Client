@@ -1,16 +1,30 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, loginUser } = useAuth();
   const history = useHistory();
+  const [logInData, setLogInData] = useState();
 
   const handleGoogleSignIn = () => {
     signInWithGoogle(history);
+  };
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...logInData };
+    newLoginData[field] = value;
+    setLogInData(newLoginData);
+  };
+
+  const handleLoginSubmit = (e) => {
+    loginUser(logInData?.email, logInData?.password, history);
+    e.preventDefault();
   };
 
   return (
@@ -19,20 +33,26 @@ const Login = () => {
         <Typography variant="h5" sx={{ mb: 2 }}>
           Login
         </Typography>
-        <form>
+        <form onSubmit={handleLoginSubmit}>
           <TextField
-            label="Email"
+            label="Your Email"
+            type="email"
+            name="name"
+            onBlur={handleOnBlur}
             variant="standard"
             sx={{ width: "100%", mb: 2 }}
           />
           <br />
           <TextField
-            label="Password"
+            label="Your Password"
+            type="password"
+            name="password"
+            onBlur={handleOnBlur}
             variant="standard"
             sx={{ width: "100%" }}
           />
           <br />
-          <Button variant="contained" sx={{ mt: 2, mb: 2 }}>
+          <Button type="submit" variant="contained" sx={{ mt: 2, mb: 2 }}>
             Login
           </Button>
         </form>

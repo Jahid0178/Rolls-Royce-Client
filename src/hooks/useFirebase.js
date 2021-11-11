@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ const useFirebase = () => {
   const auth = getAuth();
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
+  const [admin, setAdmin] = useState();
 
   // Providers
   const googleProvider = new GoogleAuthProvider();
@@ -24,6 +26,7 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        setError("");
         saveUser(user.email, user.displayName, "PUT");
         history.push("/");
       })
@@ -33,7 +36,7 @@ const useFirebase = () => {
   };
 
   // register user
-  const registerUser = (email, password, name, history) => {
+  const registerUser = (email, password, name) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setError("");
@@ -41,7 +44,19 @@ const useFirebase = () => {
         setUser(newUser);
         // save user to database
         saveUser(email, name, "POST");
-        history.push("/");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  // Login user with email & pass
+  const loginUser = (email, password, history) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        // history.replace("/");
+        setError("");
       })
       .catch((error) => {
         setError(error.message);
@@ -68,6 +83,12 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
+    fetch(`http://localhost:4000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
+
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -79,9 +100,11 @@ const useFirebase = () => {
 
   return {
     user,
+    admin,
     error,
     signInWithGoogle,
     registerUser,
+    loginUser,
     logOut,
   };
 };
