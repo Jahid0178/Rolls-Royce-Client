@@ -1,6 +1,11 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import Box from "@mui/material/Box";
 
 const Footer = () => {
   return (
@@ -61,7 +66,33 @@ const Footer = () => {
             </ul>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            4
+            <Typography variant="h5">Connect With Us</Typography>
+            <Box sx={{ mt: 2 }}>
+              <Link
+                to="#"
+                className="footer-icon"
+                style={{ color: "#fff", marginRight: "10px" }}
+              >
+                <FacebookOutlinedIcon></FacebookOutlinedIcon>
+              </Link>
+              <Link
+                to="#"
+                className="footer-icon"
+                style={{ color: "#fff", marginRight: "10px" }}
+              >
+                <YouTubeIcon></YouTubeIcon>
+              </Link>
+              <Link
+                to="#"
+                className="footer-icon"
+                style={{ color: "#fff", marginRight: "10px" }}
+              >
+                <TwitterIcon></TwitterIcon>
+              </Link>
+              <Link to="#" className="footer-icon" style={{ color: "#fff" }}>
+                <InstagramIcon></InstagramIcon>
+              </Link>
+            </Box>
           </Grid>
         </Grid>
       </Container>
