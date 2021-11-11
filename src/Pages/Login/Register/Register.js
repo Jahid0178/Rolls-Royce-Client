@@ -1,11 +1,13 @@
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import registerImg from "../../../Images/Login.svg";
 
 const Register = () => {
   const { registerUser } = useAuth();
   const [loginData, setLoginData] = useState({});
+  const history = useHistory();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -19,7 +21,12 @@ const Register = () => {
       alert("Your password didn't matched");
       return;
     }
-    registerUser(loginData?.email, loginData?.password, loginData?.name);
+    registerUser(
+      loginData?.email,
+      loginData?.password,
+      loginData?.name,
+      history
+    );
     e.preventDefault();
   };
   return (

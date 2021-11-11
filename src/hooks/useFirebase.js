@@ -24,7 +24,7 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user);
+        saveUser(user.email, user.displayName, "PUT");
         history.push("/");
       })
       .catch((error) => {
@@ -33,14 +33,15 @@ const useFirebase = () => {
   };
 
   // register user
-  const registerUser = (email, password, name) => {
+  const registerUser = (email, password, name, history) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setError("");
         const newUser = { email, displayName: name };
         setUser(newUser);
         // save user to database
-        saveUser(email, name);
+        saveUser(email, name, "POST");
+        history.push("/");
       })
       .catch((error) => {
         setError(error.message);
@@ -48,10 +49,10 @@ const useFirebase = () => {
   };
 
   // Save User
-  const saveUser = (email, displayName) => {
+  const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
     fetch("http://localhost:4000/users", {
-      method: "POST",
+      method: method,
       headers: {
         "content-type": "application/json",
       },
