@@ -24,16 +24,21 @@ const PurchaseProduct = () => {
       .then((data) => setSingleProduct(data));
   }, []);
 
-  const handlePurchase = (id) => {
-    const url = `http://localhost:4000/purchaseProduct/${id}&&${user.email}`;
+  const handlePurchase = () => {
+    const url = `http://localhost:4000/purchaseProduct/${user.email}`;
     fetch(url, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(singleProduct),
-    });
-    console.log(url);
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged === true) {
+          alert("Product added successfully");
+        }
+      });
   };
 
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../Shared/Footer/Footer";
 import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
 import Mission from "../Mission/Mission";
@@ -13,6 +14,7 @@ const Home = () => {
       <Products></Products>
       <Services></Services>
       <Mission></Mission>
+      <Footer></Footer>
     </div>
   );
 };
