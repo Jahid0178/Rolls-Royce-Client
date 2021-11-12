@@ -49,6 +49,19 @@ function Dashboard(props) {
               <Button variant="contained">Make Admin</Button>
             </Box>
           </Link>
+          <Link to={`${url}/addNewProduct`} style={{ textDecoration: "none" }}>
+            <Box sx={{ mt: 2, ml: 2 }}>
+              <Button variant="contained">Add New Product</Button>
+            </Box>
+          </Link>
+          <Link
+            to={`${url}/manageAllOrders`}
+            style={{ textDecoration: "none" }}
+          >
+            <Box sx={{ mt: 2, ml: 2 }}>
+              <Button variant="contained">Manage All Orders</Button>
+            </Box>
+          </Link>
         </Box>
       ) : (
         ""
@@ -63,11 +76,6 @@ function Dashboard(props) {
         ""
       )}
 
-      <Link to={`${url}/addNewProduct`} style={{ textDecoration: "none" }}>
-        <Box sx={{ mt: 2, ml: 2 }}>
-          <Button variant="contained">Add New Product</Button>
-        </Box>
-      </Link>
       <Link to={`${url}/payment`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">Payment</Button>
@@ -78,11 +86,7 @@ function Dashboard(props) {
           <Button variant="contained">Review</Button>
         </Box>
       </Link>
-      <Link to={`${url}/manageAllOrders`} style={{ textDecoration: "none" }}>
-        <Box sx={{ mt: 2, ml: 2 }}>
-          <Button variant="contained">Manage All Orders</Button>
-        </Box>
-      </Link>
+
       <Link
         to="/"
         style={{

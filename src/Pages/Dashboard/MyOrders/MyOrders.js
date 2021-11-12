@@ -65,7 +65,7 @@ const MyOrders = () => {
                   {row.name}
                 </TableCell>
                 <TableCell align="center">{row.email} </TableCell>
-                <TableCell align="center">{row.fat}</TableCell>
+                <TableCell align="center">{row.status}</TableCell>
                 <TableCell align="center">
                   <Button onClick={() => handleOrderDelete(row._id)}>
                     <DeleteIcon></DeleteIcon>

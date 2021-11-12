@@ -31,7 +31,7 @@ const PurchaseProduct = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(singleProduct),
+      body: JSON.stringify({ ...singleProduct, status: "Pending" }),
     })
       .then((res) => res.json())
       .then((data) => {
