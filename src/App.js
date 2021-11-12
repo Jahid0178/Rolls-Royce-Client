@@ -15,6 +15,7 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import Register from "./Pages/Login/Register/Register";
 import NotFound from "./Pages/NotFound/NotFound";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const theme = createTheme({
   palette: {
