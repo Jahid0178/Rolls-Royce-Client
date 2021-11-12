@@ -19,6 +19,7 @@ import Review from "../Review/Review";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import AddNewProduct from "../AddNewProduct/AddNewProduct";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 
 const drawerWidth = 240;
 
@@ -205,9 +206,9 @@ function Dashboard(props) {
           <Route path={`${path}/manageAllOrders`}>
             <ManageAllOrders></ManageAllOrders>
           </Route>
-          <Route path={`${path}/makeAdmin`}>
+          <AdminRoute path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
-          </Route>
+          </AdminRoute>
         </Switch>
       </Box>
     </Box>
