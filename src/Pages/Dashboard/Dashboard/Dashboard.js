@@ -18,6 +18,10 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
+import MyOrders from "../MyOrders/MyOrders";
+import Payment from "../Payment/Payment";
+import Review from "../Review/Review";
 
 const drawerWidth = 240;
 
@@ -26,6 +30,7 @@ function Dashboard(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { user, logOut, admin } = useAuth();
   const history = useHistory();
+  let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -56,21 +61,21 @@ function Dashboard(props) {
       ) : (
         ""
       )}
-      <NavLink to="/myOrders" style={{ textDecoration: "none" }}>
+      <Link to={`${url}/myOrders`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">My Orders</Button>
         </Box>
-      </NavLink>
-      <NavLink to="/payment" style={{ textDecoration: "none" }}>
+      </Link>
+      <Link to={`${url}/payment`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">Payment</Button>
         </Box>
-      </NavLink>
-      <NavLink to="/review" style={{ textDecoration: "none" }}>
+      </Link>
+      <Link to={`${url}/review`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">Review</Button>
         </Box>
-      </NavLink>
+      </Link>
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem button key={text}>
@@ -167,7 +172,20 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>content</Typography>
+        <Switch>
+          <Route exact path={path}>
+            <h3>Please select a topic.</h3>
+          </Route>
+          <Route path={`${path}/myOrders`}>
+            <MyOrders></MyOrders>
+          </Route>
+          <Route path={`${path}/payment`}>
+            <Payment></Payment>
+          </Route>
+          <Route path={`${path}/review`}>
+            <Review></Review>
+          </Route>
+        </Switch>
       </Box>
     </Box>
   );
