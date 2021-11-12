@@ -14,6 +14,7 @@ import Review from "./Pages/Dashboard/Review/Review";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import Register from "./Pages/Login/Register/Register";
+import NotFound from "./Pages/NotFound/NotFound";
 
 const theme = createTheme({
   palette: {
@@ -67,6 +68,9 @@ function App() {
             </Route>
             <Route path="/register">
               <Register></Register>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
         </Router>
