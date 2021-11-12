@@ -50,16 +50,26 @@ const Reviews = () => {
             return (
               <SwiperSlide key={item._id}>
                 <div className="review_card">
-                  <img
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "50%",
-                      objectFit: "cover",
-                    }}
-                    src={imageLink}
-                    alt=""
-                  />
+                  <Box style={{ display: "flex" }}>
+                    <img
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
+                      src={imageLink}
+                      alt=""
+                    />
+                    <Box sx={{ ml: 2 }}>
+                      <Typography variant="h5" style={{ color: "#000" }}>
+                        {name}
+                      </Typography>
+                      <Typography variant="h6" style={{ color: "#818181" }}>
+                        {profession}
+                      </Typography>
+                    </Box>
+                  </Box>
                   <Rating
                     emptySymbol="fa fa-star-o fa-2x"
                     fullSymbol="fas fa-star fa-2x"
@@ -69,8 +79,6 @@ const Reviews = () => {
                     className="rating"
                   />
                   <p style={{ color: "#000" }}>{commentBox}</p>
-                  <h5 style={{ color: "#000" }}>{name}</h5>
-                  <h6 style={{ color: "#000" }}>{profession}</h6>
                 </div>
               </SwiperSlide>
             );
