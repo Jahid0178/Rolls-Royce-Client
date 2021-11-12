@@ -1,13 +1,4 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ProductDetails from "../ProductDetails/ProductDetails";
 
