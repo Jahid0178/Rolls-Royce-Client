@@ -4,6 +4,7 @@ import Navigation from "../../Shared/Navigation/Navigation";
 import Banner from "../Banner/Banner";
 import Mission from "../Mission/Mission";
 import Products from "../Products/Products";
+import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Products></Products>
       <Services></Services>
       <Mission></Mission>
+      <Reviews></Reviews>
       <Footer></Footer>
     </div>
   );
