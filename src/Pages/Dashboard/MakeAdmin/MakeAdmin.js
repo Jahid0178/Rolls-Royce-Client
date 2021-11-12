@@ -1,5 +1,6 @@
 import { Alert, Button, Container, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
@@ -40,9 +41,14 @@ const MakeAdmin = () => {
           variant="standard"
         />
         <br />
-        <Button type="submit" sx={{ mt: 1 }} variant="contained">
+        <Button type="submit" sx={{ mt: 1, mr: 1 }} variant="contained">
           Make Admin
         </Button>
+        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          <Button sx={{ mt: 1 }} variant="contained">
+            Back
+          </Button>
+        </Link>
       </form>
       {success && <Alert severity="success">Admin Added Success</Alert>}
     </Container>
