@@ -21,14 +21,15 @@ const useFirebase = () => {
   // Providers
   const googleProvider = new GoogleAuthProvider();
 
-  const signInWithGoogle = (history) => {
+  const signInWithGoogle = (location, history) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         setUser(user);
         setError("");
         saveUser(user.email, user.displayName, "PUT");
-        history.push("/");
+        const destination = location?.state?.form || "/";
+        history.push(destination);
       })
       .catch((error) => {
         setError(error.message);
@@ -51,11 +52,12 @@ const useFirebase = () => {
   };
 
   // Login user with email & pass
-  const loginUser = (email, password, history) => {
+  const loginUser = (email, password, history, location) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
-        history.push("/");
+        const destination = location?.state?.form || "/";
+        history.replace(destination);
         setError("");
       })
       .catch((error) => {

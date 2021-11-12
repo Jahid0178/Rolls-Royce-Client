@@ -22,7 +22,7 @@ const PurchaseProduct = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
-  }, []);
+  }, [id]);
 
   const handlePurchase = () => {
     const url = `https://frozen-eyrie-42081.herokuapp.com/purchaseProduct/${user.email}`;

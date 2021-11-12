@@ -1,20 +1,21 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const { signInWithGoogle, loginUser } = useAuth();
   const history = useHistory();
+  const location = useLocation();
   const [logInData, setLogInData] = useState({
     email: "",
     password: "",
   });
 
   const handleGoogleSignIn = () => {
-    signInWithGoogle(history);
+    signInWithGoogle(location, history);
   };
 
   const handleOnBlur = (e) => {
@@ -27,7 +28,7 @@ const Login = () => {
   };
 
   const handleLoginSubmit = (e) => {
-    loginUser(logInData?.email, logInData?.password, history);
+    loginUser(logInData?.email, logInData?.password, history, location);
     e.preventDefault();
   };
 
