@@ -1,4 +1,3 @@
-import { CleaningServices } from "@mui/icons-material";
 import {
   getAuth,
   signInWithPopup,
@@ -67,7 +66,7 @@ const useFirebase = () => {
   // Save User
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:4000/users", {
+    fetch("https://frozen-eyrie-42081.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -84,7 +83,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/users/${user.email}`)
+    fetch(`https://frozen-eyrie-42081.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

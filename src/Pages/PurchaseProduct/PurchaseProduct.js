@@ -18,14 +18,14 @@ const PurchaseProduct = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const url = `http://localhost:4000/products/${id}`;
+    const url = `https://frozen-eyrie-42081.herokuapp.com/products/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
   }, []);
 
   const handlePurchase = () => {
-    const url = `http://localhost:4000/purchaseProduct/${user.email}`;
+    const url = `https://frozen-eyrie-42081.herokuapp.com/purchaseProduct/${user.email}`;
     fetch(url, {
       method: "POST",
       headers: {

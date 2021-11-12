@@ -15,7 +15,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user.email) {
-      const url = `http://localhost:4000/purchaseProduct?email=${user.email}`;
+      const url = `https://frozen-eyrie-42081.herokuapp.com/purchaseProduct?email=${user.email}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setOrders(data));
@@ -23,7 +23,7 @@ const MyOrders = () => {
   }, [user.email]);
 
   const handleOrderDelete = (id) => {
-    const url = `http://localhost:4000/purchaseProduct/${id}`;
+    const url = `https://frozen-eyrie-42081.herokuapp.com/purchaseProduct/${id}`;
     fetch(url, {
       method: "DELETE",
     })

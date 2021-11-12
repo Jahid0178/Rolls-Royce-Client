@@ -25,7 +25,7 @@ const Reviews = () => {
   window.addEventListener("resize", handleReview);
 
   useEffect(() => {
-    fetch("http://localhost:4000/review")
+    fetch("https://frozen-eyrie-42081.herokuapp.com/review")
       .then((res) => res.json())
       .then((data) => setReviewData(data));
   }, []);

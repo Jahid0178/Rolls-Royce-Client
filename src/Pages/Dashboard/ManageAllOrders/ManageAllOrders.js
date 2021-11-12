@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    const url = "http://localhost:4000/purchaseProducts";
+    const url = "https://frozen-eyrie-42081.herokuapp.com/purchaseProducts";
     fetch(url)
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
@@ -32,7 +32,7 @@ const ManageAllOrders = () => {
       id,
       status,
     };
-    fetch("http://localhost:4000/purchaseProduct", {
+    fetch("https://frozen-eyrie-42081.herokuapp.com/purchaseProduct", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

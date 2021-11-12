@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const AddNewProduct = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:4000/products", {
+    fetch("https://frozen-eyrie-42081.herokuapp.com/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

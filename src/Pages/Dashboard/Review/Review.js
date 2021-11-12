@@ -22,7 +22,7 @@ const Review = () => {
   };
 
   const handleOnReview = (e) => {
-    const url = "http://localhost:4000/review";
+    const url = "https://frozen-eyrie-42081.herokuapp.com/review";
     fetch(url, {
       method: "POST",
       headers: {
