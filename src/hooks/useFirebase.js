@@ -1,3 +1,4 @@
+import { CleaningServices } from "@mui/icons-material";
 import {
   getAuth,
   signInWithPopup,
@@ -54,7 +55,7 @@ const useFirebase = () => {
   const loginUser = (email, password, history) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setUser(userCredential);
+        setUser(userCredential.user);
         history.push("/");
         setError("");
       })
@@ -96,7 +97,7 @@ const useFirebase = () => {
         setUser({});
       }
     });
-  }, []);
+  }, [auth]);
 
   return {
     user,
