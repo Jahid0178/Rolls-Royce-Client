@@ -30,33 +30,56 @@ const AddNewProduct = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className="field-container">
           <input
+            className="add-product-field"
             {...register("img", {
               required: true,
             })}
             placeholder="Image Link"
           />
-          <input {...register("name", { required: true })} placeholder="Name" />
-          <input type="text" {...register("price")} placeholder="Price" />
-          <input type="text" {...register("desc")} placeholder="Description" />
           <input
+            className="add-product-field"
+            {...register("name", { required: true })}
+            placeholder="Name"
+          />
+          <input
+            className="add-product-field"
+            type="text"
+            {...register("price")}
+            placeholder="Price"
+          />
+          <input
+            className="add-product-field"
+            type="text"
+            {...register("desc")}
+            placeholder="Description"
+          />
+          <input
+            className="add-product-field"
             type="text"
             {...register("fuelType")}
             placeholder="Fuel Type"
           />
-          <input type="text" {...register("engine")} placeholder="Engine" />
           <input
+            className="add-product-field"
+            type="text"
+            {...register("engine")}
+            placeholder="Engine"
+          />
+          <input
+            className="add-product-field"
             type="text"
             {...register("powerAndTorque")}
             placeholder="Power And Torque"
           />
           <input
+            className="add-product-field"
             type="text"
             {...register("driveTrain")}
             placeholder="Drive Train"
           />
           <input type="submit" value="Add" />
           <Link to="/dashboard" style={{ textDecoration: "none" }}>
-            <Button variant="contained" color="primary">
+            <Button sx={{ mt: 1 }} variant="contained" color="primary">
               Back
             </Button>
           </Link>
