@@ -43,9 +43,6 @@ function App() {
             <PrivateRoute path="/moreProducts">
               <MoreProducts></MoreProducts>
             </PrivateRoute>
-            <Route path="/addNewProduct">
-              <AddNewProduct></AddNewProduct>
-            </Route>
             <Route path="/purchaseProduct/:id">
               <PurchaseProduct></PurchaseProduct>
             </Route>
@@ -60,9 +57,6 @@ function App() {
             </Route>
             <Route path="/review">
               <Review></Review>
-            </Route>
-            <Route path="/makeAdmin">
-              <MakeAdmin></MakeAdmin>
             </Route>
             <Route path="/login">
               <Login></Login>

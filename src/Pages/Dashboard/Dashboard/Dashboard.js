@@ -16,6 +16,9 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Review from "../Review/Review";
+import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
+import AddNewProduct from "../AddNewProduct/AddNewProduct";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
 
 const drawerWidth = 240;
 
@@ -41,12 +44,7 @@ function Dashboard(props) {
       <Divider />
       {admin ? (
         <Box>
-          <Link to="/addNewProduct" style={{ textDecoration: "none" }}>
-            <Box sx={{ mt: 2, ml: 2 }}>
-              <Button variant="contained">Add New Service</Button>
-            </Box>
-          </Link>
-          <Link to="/makeAdmin" style={{ textDecoration: "none" }}>
+          <Link to={`${url}/makeAdmin`} style={{ textDecoration: "none" }}>
             <Box sx={{ mt: 2, ml: 2 }}>
               <Button variant="contained">Make Admin</Button>
             </Box>
@@ -55,9 +53,19 @@ function Dashboard(props) {
       ) : (
         ""
       )}
-      <Link to={`${url}/myOrders`} style={{ textDecoration: "none" }}>
+      {!admin ? (
+        <Link to={`${url}/myOrders`} style={{ textDecoration: "none" }}>
+          <Box sx={{ mt: 2, ml: 2 }}>
+            <Button variant="contained">My Orders</Button>
+          </Box>
+        </Link>
+      ) : (
+        ""
+      )}
+
+      <Link to={`${url}/addNewProduct`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
-          <Button variant="contained">My Orders</Button>
+          <Button variant="contained">Add New Product</Button>
         </Box>
       </Link>
       <Link to={`${url}/payment`} style={{ textDecoration: "none" }}>
@@ -68,6 +76,11 @@ function Dashboard(props) {
       <Link to={`${url}/review`} style={{ textDecoration: "none" }}>
         <Box sx={{ mt: 2, ml: 2 }}>
           <Button variant="contained">Review</Button>
+        </Box>
+      </Link>
+      <Link to={`${url}/manageAllOrders`} style={{ textDecoration: "none" }}>
+        <Box sx={{ mt: 2, ml: 2 }}>
+          <Button variant="contained">Manage All Orders</Button>
         </Box>
       </Link>
       <Link
@@ -173,6 +186,9 @@ function Dashboard(props) {
               Welcome To Dashboard
             </Typography>
           </Route>
+          <Route path={`${path}/addNewProduct`}>
+            <AddNewProduct></AddNewProduct>
+          </Route>
           <Route path={`${path}/myOrders`}>
             <MyOrders></MyOrders>
           </Route>
@@ -181,6 +197,12 @@ function Dashboard(props) {
           </Route>
           <Route path={`${path}/review`}>
             <Review></Review>
+          </Route>
+          <Route path={`${path}/manageAllOrders`}>
+            <ManageAllOrders></ManageAllOrders>
+          </Route>
+          <Route path={`${path}/makeAdmin`}>
+            <MakeAdmin></MakeAdmin>
           </Route>
         </Switch>
       </Box>
