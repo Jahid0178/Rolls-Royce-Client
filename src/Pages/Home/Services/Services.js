@@ -11,7 +11,7 @@ const alignment = {
 
 const Services = () => {
   return (
-    <Container sx={{ my: 3 }}>
+    <Container sx={{ my: 5 }}>
       <Typography variant="h4" sx={{ textAlign: "center", my: 2 }}>
         Services
       </Typography>
