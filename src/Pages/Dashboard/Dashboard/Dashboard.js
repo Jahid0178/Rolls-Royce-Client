@@ -42,7 +42,7 @@ function Dashboard(props) {
   };
 
   const drawer = (
-    <div>
+    <div style={{ position: "relative", height: "100vh" }}>
       <Toolbar />
       <Divider />
       {admin ? (
@@ -76,16 +76,17 @@ function Dashboard(props) {
           <Button variant="contained">Review</Button>
         </Box>
       </Link>
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Link
+        to="/"
+        style={{
+          position: "absolute",
+          bottom: "10px",
+          left: "15px",
+          textDecoration: "none",
+        }}
+      >
+        <Button variant="contained">Back To Home</Button>
+      </Link>
     </div>
   );
 

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import SwiperCore, { Pagination } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import "./Reviews.css";
 
 SwiperCore.use([Pagination]);
 
@@ -51,8 +52,8 @@ const Reviews = () => {
                 <div className="review_card">
                   <img
                     style={{
-                      width: "100px",
-                      height: "100px",
+                      width: "50px",
+                      height: "50px",
                       borderRadius: "50%",
                       objectFit: "cover",
                     }}
@@ -61,7 +62,7 @@ const Reviews = () => {
                   />
                   <Rating
                     emptySymbol="fa fa-star-o fa-2x"
-                    fullSymbol="fa fa-star fa-2x"
+                    fullSymbol="fas fa-star fa-2x"
                     fractions={2}
                     initialRating={rating}
                     readonly
