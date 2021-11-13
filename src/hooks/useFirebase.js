@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [admin, setAdmin] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Providers
   const googleProvider = new GoogleAuthProvider();
@@ -38,6 +39,7 @@ const useFirebase = () => {
 
   // register user
   const registerUser = (email, password, name) => {
+    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setError("");
@@ -48,11 +50,13 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   // Login user with email & pass
   const loginUser = (email, password, history, location) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
@@ -62,7 +66,8 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   // Save User
@@ -79,9 +84,15 @@ const useFirebase = () => {
 
   // User logout
   const logOut = () => {
-    signOut(auth).then(() => {
-      setUser({});
-    });
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -91,12 +102,14 @@ const useFirebase = () => {
   }, [user.email]);
 
   useEffect(() => {
+    setIsLoading(true);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser({});
       }
+      setIsLoading(false);
     });
   }, [auth]);
 
@@ -105,6 +118,7 @@ const useFirebase = () => {
     admin,
     error,
     signInWithGoogle,
+    isLoading,
     registerUser,
     loginUser,
     logOut,
